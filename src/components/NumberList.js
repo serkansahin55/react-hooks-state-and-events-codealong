@@ -1,11 +1,18 @@
-import React from "react";
+import React, {useState} from "react";
 import { randomNumber } from "../utils";
 
-function Numbers() {
+function NumberList() {
+
+  const [numbers, setNumbers] = useState([1, 2, 3])
   function handleAddNumber() {
     const newNumber = randomNumber();
-    console.log(newNumber);
+    const newNumberArray = [...numbers, newNumber]
+    setNumbers(newNumberArray)
   }
+
+  const numberList = numbers.map((num) => {
+    <li key={num}>{num}</li>
+  })
 
   return (
     <div>
@@ -15,4 +22,4 @@ function Numbers() {
   );
 }
 
-export default Numbers;
+export default NumberList;
